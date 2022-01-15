@@ -1,0 +1,14 @@
+{
+  "name": "tasknodejs",
+  "version": "1.0.0",
+  "description": "Project task with Node and MVC",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "author": "Jorge Carlotto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
