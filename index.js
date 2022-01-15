@@ -4,6 +4,9 @@ const path = require("path");
 
 const app = express();
 
+//public static files
+app.use(express.static('public'))
+
 //Template Engine
 app.set('view engine', 'pug');
 
