@@ -8,7 +8,6 @@ const projectController = require('../controllers/projectController')
 //Routers
 module.exports = function(){
     router.get('/', projectController.projectsHome);
-    router.get('/nosotros',projectController.aboutUs);
-    
+
     return router; 
 }

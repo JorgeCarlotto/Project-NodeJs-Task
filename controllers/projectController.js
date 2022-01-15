@@ -1,7 +1,4 @@
 exports.projectsHome = (req, res) => {
-    res.send('index page')
+    res.render('index')
 }
 
-exports.aboutUs = (req, res) =>{
-    res.send("Sobre Nosotros Page");
-};
