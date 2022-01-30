@@ -3,6 +3,19 @@ const routers = require("./routes/indexRoutes");
 const path = require("path");
 const bodyParser = require("body-parser");
 
+
+//DataBase conection 
+const db = require('./config/db')
+
+//Iport the model 
+
+require('./models/Proyectos');
+
+db.sync()
+    .then(()=> console.log('Conectado con el servidor'))
+    .catch( e => console.log(e))
+
+
 const app = express();
 
 //public static files
