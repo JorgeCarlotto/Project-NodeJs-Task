@@ -1,15 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-//Controllers
-const projectController = require('../controllers/projectController')
+//express validator
 
+const { body } = require("express-validator/check");
+
+//Controllers
+const projectController = require("../controllers/projectController");
 
 //Routers
-module.exports = function(){
-    router.get('/', projectController.projectsHome);
-    router.get('/nuevo-proyecto', projectController.formularioProyecto)
-    router.post('/nuevo-proyecto', projectController.nuevoProyecto)
+module.exports = function () {
+  router.get("/", projectController.projectsHome);
+  router.get("/nuevo-proyecto", projectController.formularioProyecto);
+  router.post(
+    "/nuevo-proyecto",
+    body("nombre").not().isEmpty().trim().escape(),
+    projectController.nuevoProyecto
+  );
 
-    return router; 
-}
+  return router;
+};
