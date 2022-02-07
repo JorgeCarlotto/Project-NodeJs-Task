@@ -4,6 +4,10 @@ const path = require("path");
 const bodyParser = require("body-parser");
 
 
+//helpers con f
+const helpers = require("./helpers");
+
+
 //DataBase conection 
 const db = require('./config/db')
 
@@ -26,6 +30,13 @@ app.set('view engine', 'pug');
 
 // views
 app.set('views',path.join(__dirname,'./views'));
+
+//pasar var dump a la app 
+app.use((req, res, next) =>{
+    res.locals.year = 2022;
+    res.locals.vardump = helpers.vardump;
+    next();
+})
 
 
 //bodyParser //post

@@ -20,11 +20,11 @@ html(lang="en")
                 .panel.lista-proyectos
                     h2 Proyectos
                     ul#protectos.proyectos 
-                        li 
-                            a(href='#') Diseño de.....
-                        li 
-                            a(href='#') Diseño de.....
-                        li 
-                            a(href='#') Diseño de.....  
+                        if (proyectos.length)
+                            each proyecto in proyectos
+                                li
+                                    a(href="${}")=proyecto.nombre
 
             block contenido 
+            
+            pre= vardump(proyectos)

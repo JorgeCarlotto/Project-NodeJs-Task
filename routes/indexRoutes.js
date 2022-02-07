@@ -3,17 +3,18 @@ const router = express.Router();
 
 //express validator
 
-const { body } = require("express-validator/check");
+const {
+  body
+} = require("express-validator/check");
 
 //Controllers
 const projectController = require("../controllers/projectController");
 
 //Routers
 module.exports = function () {
-  router.get("/", projectController.projectsHome);
+  router.get("/", projectController.proyectosHome);
   router.get("/nuevo-proyecto", projectController.formularioProyecto);
-  router.post(
-    "/nuevo-proyecto",
+  router.post("/nuevo-proyecto",
     body("nombre").not().isEmpty().trim().escape(),
     projectController.nuevoProyecto
   );

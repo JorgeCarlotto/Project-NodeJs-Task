@@ -1,12 +1,17 @@
 const Proyectos = require('../models/Proyectos')
-const slug = require('slug')
 
 
-exports.projectsHome = (req, res) => {
+
+exports.proyectosHome = async (req, res) => {
+
+    const proyectos = await Proyectos.findAll();
+    
     res.render('index',{
-        nombrePagina : 'Proyectos'
-    })
-}
+        nombrePagina:'Proyectos'+ res.locals.year ,
+        proyectos
+    });
+   
+};
 
 exports.formularioProyecto=(req, res) => {
     res.render('nuevoProyecto',{
@@ -31,8 +36,8 @@ exports.nuevoProyecto= async (req, res) => {
        })
        
    }else{
-       const url = slug(nombre).toLowerCase();
-       const proyecto = await Proyectos.create({ nombre , url });
+       
+       const proyecto = await Proyectos.create({ nombre });
        res.redirect('/')
    }
 }
