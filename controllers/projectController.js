@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const Proyectos = require('../models/Proyectos')
 
 
@@ -46,13 +47,17 @@ exports.nuevoProyecto= async (req, res) => {
 };
 
 exports.proyectoPorUrl = async(req, res, next) => {
-    const proyectos = await Proyectos.findAll();
-    const proyecto = await Proyectos.findOne({
+
+    const proyectosPromise =  Proyectos.findAll();
+
+    const proyectoPromise =  Proyectos.findOne({
         where:{
-            url: req.params.url
+            url : req.params.url
         }
     });
 
+    const [proyectos, proyecto] = await Promise.all([proyectoPromise,proyectosPromise])
+    
     if(!proyecto) return next();
 
     // console.log(proyecto)
@@ -63,3 +68,22 @@ exports.proyectoPorUrl = async(req, res, next) => {
         proyectos
     })
 };
+
+exports.formularioEditar = async(req, res,) => {
+    const proyectosPromise =  Proyectos.findAll();
+
+    const proyectoPromise =  Proyectos.findOne({
+        where:{
+            id : req.params.id
+        }
+    });
+
+    const [proyectos, proyecto] = await Promise.all([proyectoPromise,proyectosPromise])
+
+    res.render('nuevoProyecto', {
+        nombrePagina : 'Editar Proyecto',
+        proyectos,
+        proyecto
+
+    })
+}
