@@ -56,7 +56,7 @@ exports.proyectoPorUrl = async(req, res, next) => {
         }
     });
 
-    const [proyectos, proyecto] = await Promise.all([proyectoPromise,proyectosPromise])
+    const [proyectos, proyecto] = await Promise.all([proyectosPromise,proyectoPromise])
     
     if(!proyecto) return next();
 
@@ -78,7 +78,7 @@ exports.formularioEditar = async(req, res,) => {
         }
     });
 
-    const [proyectos, proyecto] = await Promise.all([proyectoPromise,proyectosPromise])
+    const [proyectos, proyecto] = await Promise.all([proyectosPromise,proyectoPromise])
 
     res.render('nuevoProyecto', {
         nombrePagina : 'Editar Proyecto',

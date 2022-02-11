@@ -14,7 +14,7 @@ const projectController = require("../controllers/projectController");
 module.exports = function () {
   router.get("/", projectController.proyectosHome);
   router.get("/nuevo-proyecto", projectController.formularioProyecto);
-  router.post("/nuevo-proyecto",
+  router.post("/nuevo-proyecto/:id",
     body("nombre").not().isEmpty().trim().escape(),
     projectController.nuevoProyecto
   );
