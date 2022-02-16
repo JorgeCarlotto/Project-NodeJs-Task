@@ -14,7 +14,7 @@ const projectController = require("../controllers/projectController");
 module.exports = function () {
   router.get("/", projectController.proyectosHome);
   router.get("/nuevo-proyecto", projectController.formularioProyecto);
-  router.post("/nuevo-proyecto/:id",
+  router.post("/nuevo-proyecto",
     body("nombre").not().isEmpty().trim().escape(),
     projectController.nuevoProyecto
   );
@@ -25,6 +25,11 @@ module.exports = function () {
 
   //Actualizar Proyecto
   router.get("/proyectos/editar/:id",projectController.formularioEditar)
+  router.post("/nuevo-proyecto/:id",
+  body("nombre").not().isEmpty().trim().escape(),
+  projectController.actualizarProyecto
+);
+
 
   return router;
 };
